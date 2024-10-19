@@ -38,7 +38,7 @@ def load_dataset(store_id):
     df_test = pd.merge( df10, df_store_raw, how='left', on='Store')
 
     #choose store to predict
-    df_test = df_test[df_test['Store']==store_id]
+    df_test = df_test[df_test['Store'] == store_id]
 
     if not df_test.empty:
         #removing closed days
@@ -104,7 +104,7 @@ def index():
 
                 # send message
                 msg = 'Store Number {} will sell R${:,.2f} in the next 6 weeks.'.format(
-                    d2.loc['store'].values[0], d2.loc['prediction'].values[0] )
+                    d2['store'].values[0], d2['prediction'].values[0] )
                 send_message(chat_id, msg)
 
                 return Response('Ok', status=200)
