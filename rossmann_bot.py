@@ -105,13 +105,17 @@ def index():
                 # send message
                 msg = 'Store Number {} will sell R${:,.2f} in the next 6 weeks.'.format(
                     d2['store'].values[0], d2['prediction'].values[0] )
-                send_message(chat_id, msg)
 
+                send_message(chat_id, msg)
                 return Response('Ok', status=200)
+
+            else:
+                send_message(chat_id, 'Store ID not available')
+                return Response('Ok', status = 200)
 
         else:
             send_message(chat_id, 'Store ID not available')
-            return Response('Ok', status = 200)
+            return Response('Ok', status=200)
 
     else:
         return '<h1> Rossmann Telegram BOT - invalid message </h1>'
